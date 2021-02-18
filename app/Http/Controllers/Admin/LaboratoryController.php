@@ -15,4 +15,24 @@ class LaboratoryController extends Controller
             'laboratories' => $laboratories,
         ]);
     }
+
+    public function create()
+    {
+        return view('pages.admin.laboratory.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name'   => 'required|max:50|min:3',
+            'code'   => 'required|min:3|max:6|unique:laboratories,code,',
+            'author' => 'required|min:3|max:75'
+        ]);
+        
+        $data = $request->all();
+
+        $laboratory = Laboratory::create($data);
+
+        return redirect()->route('laboratory.index')->with('success', "Data <b>" . $laboratory->name . "</b> berhasil di tambahkan");
+    }
 }

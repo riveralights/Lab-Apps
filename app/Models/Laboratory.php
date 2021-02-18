@@ -9,5 +9,5 @@ class Laboratory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'code'. 'author'];
+    protected $fillable = ['name', 'code', 'author'];
 }
