@@ -11,7 +11,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">DataTable</li>
+                    <li class="breadcrumb-item active" aria-current="page">Kategori Aset</li>
                 </ol>
             </nav>
         </div>
@@ -20,11 +20,21 @@
 </div>
 <div class="page-content">
     <section class="row">
+
       <div class="col-sm-12 col-md-5">
+
+        @if (Session::has('success'))
+          <div class="alert alert-success alert-dismissible show fade">
+            {!! Session('success') !!}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        @endif
+
+
         <div class="card">
           <div class="card-header d-flex justify-content-between align-items-center">
             <p>List Category</p>
-            <a href="" class="btn btn-primary btn-sm">Tambah Data</a>
+            <a href="{{ route('category.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -42,11 +52,13 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $category->name }}</td>
                         <td>
-                          <a href="#" class="btn btn-warning btn-sm">Sunting</a>
+                          <a href="{{ route('category.edit', $category) }}" class="btn btn-warning btn-sm">Sunting</a>
                         </td>
                       </tr>
                   @empty
-                      
+                      <tr>
+                        <td colspan="3" class="text-muted text-center">Tidak Ada Data</td>
+                      </tr>
                   @endforelse
                 </tbody>
             </table>

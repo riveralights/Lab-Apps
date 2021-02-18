@@ -20,10 +20,10 @@
                 </a>
             </li>
             
-            <li class="sidebar-item ">
-                <a href="index.html" class='sidebar-link'>
-                    <i class="bi bi-laptop-fill"></i>
-                    <span>Ruangan Lab</span>
+            <li class="sidebar-item{{ Request::is('admin/category*') ? ' active' : '' }} ">
+                <a href="{{ route('category.index') }}" class='sidebar-link'>
+                    <i class="bi bi-front"></i>
+                    <span>Kategori Aset</span>
                 </a>
             </li>
 
