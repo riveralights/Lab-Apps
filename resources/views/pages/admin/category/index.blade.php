@@ -53,6 +53,11 @@
                         <td>{{ $category->name }}</td>
                         <td>
                           <a href="{{ route('category.edit', $category) }}" class="btn btn-warning btn-sm">Sunting</a>
+                          <form action="{{ route('category.destroy', $category) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Anda yaking ingin menghapus data {{ $category->name }} ?')">Hapus</button>
+                          </form>
                         </td>
                       </tr>
                   @empty

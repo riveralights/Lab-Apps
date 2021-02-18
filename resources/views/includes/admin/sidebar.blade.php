@@ -13,7 +13,7 @@
         <ul class="menu">
             <li class="sidebar-title">Menu Lab Apps</li>
 
-            <li class="sidebar-item{{ Request::is('admin/dashboard') ? ' active' : '' }} ">
+            <li class="sidebar-item{{ Request::is('admin') ? ' active' : '' }} ">
                 <a href="{{ route('dashboard') }}" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Dashboard</span>

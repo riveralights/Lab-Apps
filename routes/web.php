@@ -28,6 +28,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
         Route::post('/create', [CategoryController::class, 'store'])->name('category.store');
         Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
         Route::put('/{category}', [CategoryController::class, 'update'])->name('category.update');
+        Route::delete('{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
     });
 });
 

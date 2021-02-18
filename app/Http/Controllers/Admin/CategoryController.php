@@ -51,4 +51,12 @@ class CategoryController extends Controller
 
         return redirect()->route('category.index')->with('success', "Data <b>" . $category->name . "</b> berhasil di ubah");
     }
+
+    public function destroy(Category $category)
+    {
+        $old_name = $category->name;
+        $category->delete();
+
+        return redirect()->route('category.index')->with('success', "Data <b>" . $old_name . "</b> berhasil di hapus");
+    }
 }
