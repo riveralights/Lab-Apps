@@ -27,6 +27,13 @@
                 </a>
             </li>
 
+            <li class="sidebar-item{{ Request::is('admin/laboratory*') ? ' active' : '' }} ">
+                <a href="{{ route('laboratory.index') }}" class='sidebar-link'>
+                    <i class="bi bi-easel-fill"></i>
+                    <span>Ruangan Lab</span>
+                </a>
+            </li>
+
             <li class="sidebar-title">Personalisasi</li>
 
             <li class="sidebar-item  has-sub">

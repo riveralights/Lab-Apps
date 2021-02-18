@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController as DashboardController;
 use App\Http\Controllers\Admin\CategoryController as CategoryController;
+use App\Http\Controllers\Admin\LaboratoryController as LaboratoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,15 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
         Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
         Route::put('/{category}', [CategoryController::class, 'update'])->name('category.update');
         Route::delete('{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
+    });
+
+    Route::prefix('laboratory')->group(function(){
+        Route::get('/', [LaboratoryController::class, 'index'])->name('laboratory.index');
+        Route::get('/create', [LaboratoryController::class, 'create'])->name('laboratory.create');
+        Route::post('/create', [LaboratoryController::class, 'store'])->name('laboratory.store');
+        Route::get('/{laboratory}/edit', [LaboratoryController::class, 'edit'])->name('laboratory.edit');
+        Route::put('/{laboratory}', [LaboratoryController::class, 'update'])->name('laboratory.update');
+        Route::delete('{laboratory}', [LaboratoryController::class, 'destroy'])->name('laboratory.destroy');
     });
 });
 
