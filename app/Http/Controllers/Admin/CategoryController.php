@@ -10,9 +10,45 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::orderBy('created_at', 'DESC')->get();
+        $categories = Category::all();
         return view('pages.admin.category.index', [
-            'categories' => $categories
+            'categories' => $categories,
         ]);
+    }
+
+    public function create()
+    {
+        return view('pages.admin.category.create');
+    }
+    
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:100|unique:categories,name,'
+        ]);
+
+        $data = $request->all();
+
+        $category = Category::create($data);
+
+        return redirect()->route('category.index')->with('success', "Data <b>" . $category->name . "</b> berhasil di tambahkan");
+    }
+
+    public function edit(Category $category)
+    {
+        return view('pages.admin.category.edit', [
+            'category' => $category,
+        ]);
+    }
+
+    public function update(Request $request, Category $category)
+    {
+        $request->validate([
+            'name' => 'required|max:100|unique:categories,name,' . $category->id
+        ]);
+        $data = $request->all();
+        $category->update($data);
+
+        return redirect()->route('category.index')->with('success', "Data <b>" . $category->name . "</b> berhasil di ubah");
     }
 }
