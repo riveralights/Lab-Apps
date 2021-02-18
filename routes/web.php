@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/admin', 'layouts.admin.app');
+Route::view('/admin', 'pages.admin.dashboard');
