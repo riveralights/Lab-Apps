@@ -15,4 +15,11 @@ class ReportController extends Controller
             'reports' => $reports
         ]);
     }
+
+    public function show(Report $report)
+    {
+        return view('pages.admin.report.show', [
+            'report' => $report,
+        ]);
+    }
 }

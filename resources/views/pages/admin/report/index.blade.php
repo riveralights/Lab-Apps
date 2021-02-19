@@ -58,11 +58,12 @@
                         <td>{{ $report->laboratory->name }}</td>
                         <td>{{ \Carbon\Carbon::parse($report->starting_date)->format('d F Y') }}</td>
                         <td>
-                          <a href="#" class="btn btn-warning btn-sm">Sunting</a>
+                          <a href="{{ route('report.show', $report) }}" class="btn btn-info pb-0"><i class="bi bi-eye-fill"></i></a>
+                          <a href="#" class="btn btn-warning pb-0"><i class="bi bi-pencil-fill"></i></a>
                           <form action="#" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Anda yaking ingin menghapus data {{ $report->name }} ?')">Hapus</button>
+                            <button type="submit" class="btn btn-danger pb-0" onclick="return confirm('Anda yaking ingin menghapus data {{ $report->name }} ?')"><i class="bi bi-trash2-fill"></i></button>
                           </form>
                         </td>
                       </tr>

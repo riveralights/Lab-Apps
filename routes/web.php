@@ -45,6 +45,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
 
     Route::prefix('report')->group(function(){
         Route::get('/', [ReportController::class, 'index'])->name('report.index');
+        Route::get('/{report}', [ReportController::class, 'show'])->name('report.show');
     });
 });
 

@@ -15,4 +15,9 @@ class Report extends Model
     {
         return $this->belongsTo(Laboratory::class);
     }
+
+    public function report_details()
+    {
+        return $this->hasMany(ReportDetail::class);
+    }
 }
