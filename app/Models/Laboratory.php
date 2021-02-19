@@ -10,4 +10,9 @@ class Laboratory extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'code', 'author'];
+
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
 }
