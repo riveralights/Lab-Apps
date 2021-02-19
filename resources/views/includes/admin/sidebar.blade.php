@@ -34,6 +34,13 @@
                 </a>
             </li>
 
+            <li class="sidebar-item{{ Request::is('admin/report*') ? ' active' : '' }} ">
+                <a href="{{ route('report.index') }}" class='sidebar-link'>
+                    <i class="bi bi-newspaper"></i>
+                    <span>Berita Acara</span>
+                </a>
+            </li>
+
             <li class="sidebar-title">Personalisasi</li>
 
             <li class="sidebar-item  has-sub">

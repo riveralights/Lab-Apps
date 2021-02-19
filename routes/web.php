@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController as DashboardController;
 use App\Http\Controllers\Admin\CategoryController as CategoryController;
 use App\Http\Controllers\Admin\LaboratoryController as LaboratoryController;
+use App\Http\Controllers\Admin\ReportController as ReportController;
+use App\Models\Laboratory;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,10 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
         Route::get('/{laboratory}/edit', [LaboratoryController::class, 'edit'])->name('laboratory.edit');
         Route::put('/{laboratory}', [LaboratoryController::class, 'update'])->name('laboratory.update');
         Route::delete('{laboratory}', [LaboratoryController::class, 'destroy'])->name('laboratory.destroy');
+    });
+
+    Route::prefix('report')->group(function(){
+        Route::get('/', [ReportController::class, 'index'])->name('report.index');
     });
 });
 
