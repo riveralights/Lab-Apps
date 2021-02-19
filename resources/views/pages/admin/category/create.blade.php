@@ -20,7 +20,7 @@
 <div class="page-content">
     <section class="row">
       <div class="col-sm-12 col-md-3">
-        <div class="card">
+        <div class="card shadow">
           <div class="card-header">
             <h4 class="card-title">Tambah Data Kategori</h4>
           </div>
