@@ -34,7 +34,7 @@
         <div class="card">
           <div class="card-header d-flex justify-content-between align-items-center">
             <p>List Berita Acara</p>
-            <a href="{{ route('category.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
+            <a href="{{ route('report.create') }}" class="btn btn-primary btn-sm">Buat Laporan Baru</a>
           </div>
           <div class="card-body">
             <div class="table-responsive">

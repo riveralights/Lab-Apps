@@ -52,7 +52,7 @@
                 </tr>
                 @forelse ($report->report_details as $detail)
                     <tr>
-                      <td>{{ $loop->iteration }}</td>
+                      <td class="text-center">{{ $loop->iteration }}</td>
                       <td>{{ $detail->name }}</td>
                       <td class="text-center">{{ $detail->quantity }}</td>
                       <td class="text-center">{{ $detail->condition_before }}</td>
@@ -61,7 +61,7 @@
                     </tr>
                 @empty
                     <tr>
-                      <td colspan="6">Belum ada data barang yang dipinjam</td>
+                      <td colspan="6" class="text-muted text-center">Belum ada data barang yang dipinjam</td>
                     </tr>
                 @endforelse
               </table>
