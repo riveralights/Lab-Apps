@@ -49,6 +49,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
         Route::get('/create', [ReportController::class, 'create'])->name('report.create');
         Route::post('/create', [ReportController::class, 'store'])->name('report.store');
         Route::get('/{report}', [ReportController::class, 'show'])->name('report.show');
+        Route::get('/{report}/edit', [ReportController::class, 'edit'])->name('report.edit');
+        Route::put('/{report}', [ReportController::class, 'update'])->name('report.update');
+        Route::delete('{report}', [ReportController::class, 'destroy'])->name('report.destroy');
     });
 
     Route::prefix('report-detail')->group(function(){
