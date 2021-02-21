@@ -59,6 +59,10 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
         Route::post('{report_id}/create', [ReportDetailController::class, 'store'])->name('detail.store');
         Route::get('{detail_id}', [ReportDetailController::class, 'destroy'])->name('detail.destroy');
     });
+
+    Route::prefix('user')->group(function(){
+        //
+    });
 });
 
 Auth::routes();
