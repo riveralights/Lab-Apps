@@ -33,6 +33,11 @@
                   <td width="1%">:</td>
                   <td>{{ \Carbon\Carbon::parse($report->starting_date)->format('H.i') }} - {{ \Carbon\Carbon::parse($report->end_date)->format('H.i') }} WIB</td>
                 </tr>
+                <tr>
+                  <th width="15%">Keterangan</th>
+                  <td width="1%">:</td>
+                  <td>{{ $report->description }}</td>
+                </tr>
               </table>
             </div>
 
