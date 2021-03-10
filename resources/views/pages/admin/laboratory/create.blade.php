@@ -1,4 +1,5 @@
 @extends('layouts.admin.app')
+@section('title', 'Tambah Ruangan - Lab Apps Dashboard')
 @section('content')
 <div class="page-heading">
     <div class="page-title">
