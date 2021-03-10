@@ -57,7 +57,7 @@
                         <td>{{ $report->name }}</td>
                         <td>{{ $report->lesson }}</td>
                         <td>{{ $report->laboratory->name }}</td>
-                        <td>{{ \Carbon\Carbon::parse($report->starting_date)->format('d F Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($report->starting_date)->isoFormat('dddd, D MMMM Y') }}</td>
                         <td>
                           <a href="{{ route('report.show', $report) }}" class="btn btn-info pb-0"><i class="bi bi-eye-fill"></i></a>
                           <a href="{{ route('report.edit', $report) }}" class="btn btn-warning pb-0"><i class="bi bi-pencil-fill"></i></a>

@@ -26,10 +26,15 @@ class ReportDetailController extends Controller
         $report = Report::findOrFail($report_id);
 
         $request->validate([
-            'name' => 'required|max:75|min:3',
-            'quantity' => 'required|numeric',
+            'name'             => 'required|max:75|min:3',
+            'quantity'         => 'required|numeric',
             'condition_before' => 'required',
-            'condition_after' => 'required'
+            'condition_after'  => 'required'
+        ], [
+            'name.required' => 'Nama aset wajib diisi',
+            'name.max' => 'Nama aset maksimal 75 karakter',
+            'name.min' => 'Nama aset minimal 3 karakter',
+            'quantity.required' => 'Jumlah aset wajib diisi',
         ]);
 
         $data = $request->all();

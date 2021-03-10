@@ -27,6 +27,17 @@ class LaboratoryController extends Controller
             'name'   => 'required|max:50|min:3',
             'code'   => 'required|min:3|max:6|unique:laboratories,code,',
             'author' => 'required|min:3|max:75'
+        ], [
+            'name.required'   => 'Nama ruangan wajib diisi',
+            'name.max'        => 'Nama ruangan maksimal 50 karakter',
+            'name.min'        => 'Nama ruangan minimal 3 karakter',
+            'code.required'   => 'Kode ruangan wajib diisi',
+            'code.min'        => 'Kode ruangan minimal 3 karakter',
+            'code.max'        => 'Kode ruangan maksimal 6 karakter',
+            'code.unique'     => 'Kode ruangan sudah ada',
+            'author.required' => 'Nama penanggung jawab wajib diisi',
+            'author.min'      => 'Nama penanggung jawab minimal 3 karakter',
+            'author.max'      => 'Nama penanggung jawab maksimal 75 karakter'
         ]);
         
         $data = $request->all();
@@ -49,6 +60,17 @@ class LaboratoryController extends Controller
             'name'   => 'required|max:50|min:3',
             'code'   => 'required|min:3|max:6|unique:laboratories,code,' . $laboratory->id,
             'author' => 'required|min:3|max:75'
+        ], [
+            'name.required'   => 'Nama ruangan wajib diisi',
+            'name.max'        => 'Nama ruangan maksimal 50 karakter',
+            'name.min'        => 'Nama ruangan minimal 3 karakter',
+            'code.required'   => 'Kode ruangan wajib diisi',
+            'code.min'        => 'Kode ruangan minimal 3 karakter',
+            'code.max'        => 'Kode ruangan maksimal 6 karakter',
+            'code.unique'     => 'Kode ruangan sudah ada',
+            'author.required' => 'Nama penanggung jawab wajib diisi',
+            'author.min'      => 'Nama penanggung jawab minimal 3 karakter',
+            'author.max'      => 'Nama penanggung jawab maksimal 75 karakter'
         ]);
 
         $data = $request->all();

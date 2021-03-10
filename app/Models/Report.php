@@ -10,6 +10,7 @@ class Report extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'lesson', 'laboratory_id', 'starting_date', 'end_date', 'description'];
+    protected $dates = ['starting_date', 'end_date'];
 
     public function laboratory()
     {

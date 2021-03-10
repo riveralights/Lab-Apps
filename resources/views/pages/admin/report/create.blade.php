@@ -26,23 +26,26 @@
             <h4 class="card-title">Tambah Berita Acara</h4>
           </div>
           <div class="card-body">
+            @if($errors->any())
+              <div class="alert alert-danger" role="alert">
+                  <ul class="mb-0">
+                      @foreach($errors->all() as $error)
+                          <li>{!! $error !!}</li>
+                      @endforeach
+                  </ul>
+              </div>
+            @endif
             <form action="" method="POST">
               @csrf
 
               <div class="form-group">
                 <label for="name">Nama Laboran</label>
-                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
-                @error('name')
-                  <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
+                <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
               </div>
 
               <div class="form-group">
                 <label for="lesson">Nama Pelajaran</label>
-                <input type="text" name="lesson" id="lesson" class="form-control @error('lesson') is-invalid @enderror" value="{{ old('lesson') }}">
-                @error('lesson')
-                  <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
+                <input type="text" name="lesson" id="lesson" class="form-control" value="{{ old('lesson') }}">
               </div>
 
               <div class="form-group">
@@ -53,9 +56,6 @@
                       <option value="{{ $laboratory->id }}">{{ $laboratory->name }}</option>
                   @endforeach
                 </select>
-                @error('laboratory_id')
-                  <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
               </div>
 
               <div class="form-group">
@@ -76,10 +76,7 @@
 
               <div class="form-group">
                 <label for="description">Keterangan</label>
-                <textarea name="description" id="description" cols="3" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
-                @error('description')
-                  <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
+                <textarea name="description" id="description" cols="3" class="form-control">{{ old('description') }}</textarea>
               </div>
 
               <button type="submit" class="btn btn-sm btn-primary">Simpan</button>

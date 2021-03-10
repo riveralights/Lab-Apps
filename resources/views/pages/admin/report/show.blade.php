@@ -26,7 +26,7 @@
                 <tr>
                   <th width="15%">Tanggal</th>
                   <td width="1%">:</td>
-                  <td>{{ \Carbon\Carbon::parse($report->end_date)->format('d F Y') }}</td>
+                  <td>{{ \Carbon\Carbon::parse($report->end_date)->isoformat('dddd, D MMMM Y') }}</td>
                 </tr>
                 <tr>
                   <th width="15%">Waktu</th>

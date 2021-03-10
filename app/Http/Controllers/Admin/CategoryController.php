@@ -25,6 +25,10 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|max:100|unique:categories,name,'
+        ], [
+            'name.required' => 'Nama kategori wajib diisi',
+            'name.max'      => 'Nama kategori tidak boleh lebih dari 100 karakter',
+            'name.unique'   => 'Nama kategori sudah ada'
         ]);
 
         $data = $request->all();
@@ -45,7 +49,12 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|max:100|unique:categories,name,' . $category->id
+        ], [
+            'name.required' => 'Nama kategori wajib diisi',
+            'name.max'      => 'Nama kategori tidak boleh lebih dari 100 karakter',
+            'name.unique'   => 'Nama kategori sudah ada'
         ]);
+
         $data = $request->all();
         $category->update($data);
 

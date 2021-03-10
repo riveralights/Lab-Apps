@@ -96,7 +96,7 @@
               </tr>
               <tr>
                 <th>Tanggal</th>
-                <td>{{ \Carbon\Carbon::parse($report->end_date)->format('d F Y') }}</td>
+                <td>{{ \Carbon\Carbon::parse($report->end_date)->isoFormat('D MMMM Y') }}</td>
               </tr>
             </table>
           </div>
@@ -123,23 +123,26 @@
                 </button>
             </div>
             <div class="modal-body">
+                @if($errors->any())
+                  <div class="alert alert-danger" role="alert">
+                      <ul class="mb-0">
+                          @foreach($errors->all() as $error)
+                              <li>{!! $error !!}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+                @endif
                 <form action="{{ route('detail.store', $report) }}" method="POST">
                   @csrf
 
                   <div class="form-group">
                     <label for="name" class="mb-2">Nama Aset</label>
-                    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
-                    @error('name')
-                      <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
+                    <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
                   </div>
 
                   <div class="form-group">
                     <label for="quantity" class="mb-2">Jumlah Aset</label>
-                    <input type="number" name="quantity" id="quantity" class="form-control @error('quantity') is-invalid @enderror" value="{{ old('quantity') }}">
-                    @error('quantity')
-                      <span class="invalid-feedback">{{ $message }}</span>
-                    @enderror
+                    <input type="number" name="quantity" id="quantity" class="form-control" value="{{ old('quantity') }}">
                   </div>
 
                   <div class="form-group">

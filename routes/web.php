@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\LaboratoryController as LaboratoryController;
 use App\Http\Controllers\Admin\ReportController as ReportController;
 use App\Http\Controllers\Admin\ReportDetailController as ReportDetailController;
 use App\Http\Controllers\Admin\InventoryController as InventoryController;
+use App\Models\Inventory;
 use App\Models\Laboratory;
 
 /*
@@ -63,7 +64,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
 
     Route::prefix('inventory')->group(function(){
         Route::get('/', [InventoryController::class, 'index'])->name('inventory.index');
-        Route::get('create', [InventoryController::class, 'create'])->name('inventory.create');
+        Route::get('/create', [InventoryController::class, 'create'])->name('inventory.create');
+        Route::post('/create', [InventoryController::class, 'store'])->name('inventory.store');
     });
 
     Route::prefix('user')->group(function(){

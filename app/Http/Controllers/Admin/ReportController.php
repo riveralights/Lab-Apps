@@ -34,6 +34,15 @@ class ReportController extends Controller
             'starting_date' => 'required',
             'end_date'      => 'required',
             'description'   => 'required'
+        ], [
+            'name.required'          => 'Nama laboran wajib diisi',
+            'name.max'               => 'Nama laboran maksimal 75 karakter',
+            'name.min'               => 'Nama laboran minimal 3 karakter',
+            'lesson.required'        => 'Nama pelajaran wajib diisi',
+            'lesson.max'             => 'Nama pelajaran maksimal 50 karakter',
+            'starting_date.required' => 'Tanggal / waktu mulai wajib diisi',
+            'end_date.required'      => 'Tanggal / waktu akhir wajib diisi',
+            'description.required'   => 'Keterangan wajib diisi',
         ]);
 
         $reportsuccess = Report::create($request->all());
@@ -65,6 +74,15 @@ class ReportController extends Controller
             'starting_date' => 'required',
             'end_date'      => 'required',
             'description'   => 'required'
+        ], [
+            'name.required'          => 'Nama laboran wajib diisi',
+            'name.max'               => 'Nama laboran maksimal 75 karakter',
+            'name.min'               => 'Nama laboran minimal 3 karakter',
+            'lesson.required'        => 'Nama pelajaran wajib diisi',
+            'lesson.max'             => 'Nama pelajaran maksimal 50 karakter',
+            'starting_date.required' => 'Tanggal / waktu mulai wajib diisi',
+            'end_date.required'      => 'Tanggal / waktu akhir wajib diisi',
+            'description.required'   => 'Keterangan wajib diisi',
         ]);
 
         $data = $request->all();

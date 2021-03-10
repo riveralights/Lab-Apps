@@ -26,23 +26,26 @@
             <h4 class="card-title">Edit Berita Acara</h4>
           </div>
           <div class="card-body">
+            @if($errors->any())
+              <div class="alert alert-danger" role="alert">
+                  <ul class="mb-0">
+                      @foreach($errors->all() as $error)
+                          <li>{!! $error !!}</li>
+                      @endforeach
+                  </ul>
+              </div>
+            @endif
             <form action="{{ route('report.update', $report) }}" method="POST">
               @csrf
               @method('PUT')
               <div class="form-group">
                 <label for="name">Nama Laboran</label>
-                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') ?? $report->name }}">
-                @error('name')
-                  <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
+                <input type="text" name="name" id="name" class="form-control" value="{{ old('name') ?? $report->name }}">
               </div>
 
               <div class="form-group">
                 <label for="lesson">Nama Pelajaran</label>
-                <input type="text" name="lesson" id="lesson" class="form-control @error('lesson') is-invalid @enderror" value="{{ old('lesson') ?? $report->lesson }}">
-                @error('lesson')
-                  <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
+                <input type="text" name="lesson" id="lesson" class="form-control" value="{{ old('lesson') ?? $report->lesson }}">
               </div>
 
               <div class="form-group">
@@ -53,22 +56,16 @@
                       <option {{ $laboratory->id == $report->laboratory_id ? 'selected' : '' }} value="{{ $laboratory->id }}">{{ $laboratory->name }}</option>
                   @endforeach
                 </select>
-                @error('laboratory_id')
-                  <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
               </div>
 
               <div class="form-group">
                 <label for="starting_date">Tanggal / Waktu Mulai</label>
-                <input type="datetime-local" class="form-control" name="starting_date" id="starting_date">
-                @error('starting_date')
-                  <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
+                <input type="datetime-local" class="form-control" name="starting_date" id="starting_date" value="{{ date('Y-m-d\TH:i', strtotime( $report->starting_date)) }}">
               </div>
 
               <div class="form-group">
                 <label for="end_date">Tanggal / Waktu Berakhir</label>
-                <input type="datetime-local" class="form-control" name="end_date" id="end_date">
+                <input type="datetime-local" class="form-control" name="end_date" id="end_date" value="{{ date('Y-m-d\TH:i', strtotime( $report->end_date)) }}">
                 @error('end_date')
                   <span class="invalid-feedback">{{ $message }}</span>
                 @enderror
@@ -76,10 +73,7 @@
 
               <div class="form-group">
                 <label for="description">Keterangan</label>
-                <textarea name="description" id="description" cols="3" class="form-control @error('description') is-invalid @enderror">{{ old('description') ?? $report->description }}</textarea>
-                @error('description')
-                  <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
+                <textarea name="description" id="description" cols="3" class="form-control">{{ old('description') ?? $report->description }}</textarea>
               </div>
 
               <button type="submit" class="btn btn-sm btn-primary">Simpan Perubahan</button>

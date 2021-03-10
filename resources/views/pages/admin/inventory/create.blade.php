@@ -26,23 +26,27 @@
             <h4 class="card-title">Tambah Laporan Aset Baru</h4>
           </div>
           <div class="card-body">
-            <form action="" method="POST">
+            @if($errors->any())
+              <div class="alert alert-danger" role="alert">
+                  <ul class="mb-0">
+                      @foreach($errors->all() as $error)
+                          <li>{!! $error !!}</li>
+                      @endforeach
+                  </ul>
+              </div>
+            @endif
+
+            <form action="{{ route('inventory.store') }}" method="POST">
               @csrf
 
               <div class="form-group">
                 <label for="brand">Merk</label>
-                <input type="text" name="brand" id="brand" class="form-control @error('brand') is-invalid @enderror" value="{{ old('brand') }}">
-                @error('brand')
-                  <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
+                <input type="text" name="brand" id="brand" class="form-control" value="{{ old('brand') }}">
               </div>
 
               <div class="form-group">
                 <label for="name">Nama Barang</label>
-                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
-                @error('name')
-                  <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
+                <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
               </div>
 
               <div class="form-group">
@@ -53,25 +57,16 @@
                       <option value="{{ $category->id }}">{{ $category->name }}</option>
                   @endforeach
                 </select>
-                @error('category_id')
-                  <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
               </div>
 
               <div class="form-group">
                 <label for="buy_date">Tanggal Pembelian</label>
                 <input type="date" name="buy_date" id="buy_date" class="form-control">
-                @error('buy_date')
-                  <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
               </div>
 
               <div class="form-group">
                 <label for="unboxing_date">Tanggal Pemakaian</label>
                 <input type="date" name="unboxing_date" id="unboxing_date" class="form-control">
-                @error('unboxing_date')
-                  <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
               </div>
 
               <div class="form-group">
@@ -82,9 +77,6 @@
                   <option value="Rusak">Rusak</option>
                   <option value="Hilang">Hilang</option>
                 </select>
-                @error('condition')
-                  <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
               </div>
 
               <div class="form-group">
