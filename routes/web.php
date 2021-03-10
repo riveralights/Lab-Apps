@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController as CategoryController;
 use App\Http\Controllers\Admin\LaboratoryController as LaboratoryController;
 use App\Http\Controllers\Admin\ReportController as ReportController;
 use App\Http\Controllers\Admin\ReportDetailController as ReportDetailController;
+use App\Http\Controllers\Admin\InventoryController as InventoryController;
 use App\Models\Laboratory;
 
 /*
@@ -58,6 +59,11 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
         Route::get('{report_id}/create', [ReportDetailController::class, 'create'])->name('detail.create');
         Route::post('{report_id}/create', [ReportDetailController::class, 'store'])->name('detail.store');
         Route::get('{detail_id}', [ReportDetailController::class, 'destroy'])->name('detail.destroy');
+    });
+
+    Route::prefix('inventory')->group(function(){
+        Route::get('/', [InventoryController::class, 'index'])->name('inventory.index');
+        Route::get('create', [InventoryController::class, 'create'])->name('inventory.create');
     });
 
     Route::prefix('user')->group(function(){

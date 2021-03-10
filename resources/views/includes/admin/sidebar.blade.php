@@ -41,6 +41,13 @@
                 </a>
             </li>
 
+            <li class="sidebar-item{{ Request::is('admin/inventory*') ? ' active' : '' }} ">
+                <a href="{{ route('inventory.index') }}" class='sidebar-link'>
+                    <i class="bi bi-file-earmark-check-fill"></i>
+                    <span>Laporan Aset</span>
+                </a>
+            </li>
+
             <li class="sidebar-title">Personalisasi</li>
 
             <li class="sidebar-item  has-sub">
@@ -49,11 +56,6 @@
                     <span>Pengaturan Akun</span>
                 </a>
                 <ul class="submenu ">
-                    <li class="submenu-item ">
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-                    </li>
                     <li class="submenu-item ">
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Logout
