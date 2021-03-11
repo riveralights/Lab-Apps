@@ -70,8 +70,8 @@
                         <td>{{ $inventory->description }}</td>
                         <td>
                           <a href="" class="btn btn-info btn-sm">Detail</a>
-                          <a href="" class="btn btn-warning btn-sm">Sunting</a>
-                          <form action="" method="POST" class="d-inline">
+                          <a href="{{ route('inventory.edit', $inventory) }}" class="btn btn-warning btn-sm">Sunting</a>
+                          <form action="{{ route('inventory.destroy', $inventory) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Anda yaking ingin menghapus data {{ $inventory->name }} ?')">Hapus</button>

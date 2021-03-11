@@ -66,6 +66,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
         Route::get('/', [InventoryController::class, 'index'])->name('inventory.index');
         Route::get('/create', [InventoryController::class, 'create'])->name('inventory.create');
         Route::post('/create', [InventoryController::class, 'store'])->name('inventory.store');
+        Route::get('/{inventory}/edit', [InventoryController::class, 'edit'])->name('inventory.edit');
+        Route::put('/{inventory}', [InventoryController::class, 'update'])->name('inventory.update');
+        Route::delete('{inventory}', [InventoryController::class, 'destroy'])->name('inventory.destroy');
     });
 
     Route::prefix('user')->group(function(){

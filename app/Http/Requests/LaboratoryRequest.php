@@ -27,4 +27,11 @@ class LaboratoryRequest extends FormRequest
             //
         ];
     }
+
+    public function messages()
+    {
+        return [
+            // 
+        ]
+    }
 }
