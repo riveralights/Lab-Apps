@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\InventoryRequest;
 use App\Models\Category;
 use App\Models\Inventory;
 use Illuminate\Http\Request;
@@ -24,33 +25,10 @@ class InventoryController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(InventoryRequest $request)
     {
-        $request->validate([
-            'brand'         => 'required|max:30|min:2',
-            'name'          => 'required|min:2|max:255',
-            'category_id'   => 'required|integer|exists:categories,id',
-            'buy_date'      => 'required|date',
-            'unboxing_date' => 'required|date',
-            'condition'     => 'required|in:Rusak,Baik,Hilang',
-            'description'   => 'nullable'
-        ], [
-            'brand.required'         => 'Nama merk wajib diisi',
-            'brand.min'              => 'Nama merk minimal 2 karakter',
-            'brand.max'              => 'Nama merk maksimal 30 karakter',
-            'name.required'          => 'Nama barang wajib diisi',
-            'name.min'               => 'Nama barang minimal 2 karakter',
-            'name.max'               => 'Nama barang maksimal 255 karakter',
-            'category_id.required'   => 'Nama ruangan wajib dipilih.',
-            'buy_date.required'      => 'Tanggal pembelian wajib diisi',
-            'unboxing_date.required' => 'Tanggal pemakaian pertama wajib diisi',
-            'condition.required'     => 'Kondisi barang wajib diisi',
-        ]);
-
-        $data = $request->all();
-
+        $data = $request->validated();
         $inventory = Inventory::create($data);
-
         return redirect()->route('inventory.index')->with('success', "Data <b>" . $inventory->name . "</b> berhasil di tambahkan");
     }
 
@@ -61,33 +39,10 @@ class InventoryController extends Controller
         ]);
     }
 
-    public function update(Request $request, Inventory $inventory)
+    public function update(InventoryRequest $request, Inventory $inventory)
     {
-         $request->validate([
-            'brand'         => 'required|max:30|min:2',
-            'name'          => 'required|min:2|max:255',
-            'category_id'   => 'required|integer|exists:categories,id',
-            'buy_date'      => 'required|date',
-            'unboxing_date' => 'required|date',
-            'condition'     => 'required|in:Rusak,Baik,Hilang',
-            'description'   => 'nullable'
-        ], [
-            'brand.required'         => 'Nama merk wajib diisi',
-            'brand.min'              => 'Nama merk minimal 2 karakter',
-            'brand.max'              => 'Nama merk maksimal 30 karakter',
-            'name.required'          => 'Nama barang wajib diisi',
-            'name.min'               => 'Nama barang minimal 2 karakter',
-            'name.max'               => 'Nama barang maksimal 255 karakter',
-            'category_id.required'   => 'Nama ruangan wajib dipilih.',
-            'buy_date.required'      => 'Tanggal pembelian wajib diisi',
-            'unboxing_date.required' => 'Tanggal pemakaian pertama wajib diisi',
-            'condition.required'     => 'Kondisi barang wajib diisi',
-        ]);
-
-        $data = $request->all();
-
+        $data = $request->validated();
         $inventory->update($data);
-
         return redirect()->route('inventory.index')->with('success', "Data <b>" . $inventory->name . "</b> berhasil di ubah");
     }
 

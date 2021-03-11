@@ -13,7 +13,7 @@ class LaboratoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,14 +24,24 @@ class LaboratoryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'   => 'required|max:50|min:3',
+            'author' => 'required|min:3|max:75'
         ];
     }
 
     public function messages()
     {
         return [
-            // 
-        ]
+            'name.required'   => 'Nama ruangan wajib diisi',
+            'name.max'        => 'Nama ruangan maksimal 50 karakter',
+            'name.min'        => 'Nama ruangan minimal 3 karakter',
+            'code.required'   => 'Kode ruangan wajib diisi',
+            'code.min'        => 'Kode ruangan minimal 3 karakter',
+            'code.max'        => 'Kode ruangan maksimal 6 karakter',
+            'code.unique'     => 'Kode ruangan sudah ada',
+            'author.required' => 'Nama penanggung jawab wajib diisi',
+            'author.min'      => 'Nama penanggung jawab minimal 3 karakter',
+            'author.max'      => 'Nama penanggung jawab maksimal 75 karakter' 
+        ];
     }
 }
