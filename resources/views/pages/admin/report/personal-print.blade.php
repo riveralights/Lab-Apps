@@ -191,7 +191,7 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
   "Times New Roman",serif'>Sesudah</span></b></p>
   </td>
  </tr>
-@foreach($report->report_details as $detail)
+@forelse($report->report_details as $detail)
  <tr style='height:22.7pt'>
   <td width=37 valign=top style='width:28.1pt;border:solid windowtext 1.0pt;
   border-top:none;padding:0in 5.4pt 0in 5.4pt;height:22.7pt'>
@@ -207,7 +207,8 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
   <td width=64 valign=top style='width:48.0pt;border-top:none;border-left:none;
   border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
   padding:0in 5.4pt 0in 5.4pt;height:22.7pt'>
-  <p class=MsoNormal style='margin-bottom:0in;line-height:normal'><span
+  <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center;
+  line-height:normal'><span
   lang=EN-ID style='font-size:12.0pt;font-family:"Times New Roman",serif'>{{ $detail->quantity }}</span></p>
   </td>
   <td width=136 valign=top style='width:102.3pt;border-top:none;border-left:
@@ -229,7 +230,11 @@ font-family:"Times New Roman",serif'>&nbsp;</span></p>
   lang=EN-ID style='font-size:12.0pt;font-family:"Times New Roman",serif'>{{ $detail->description }}</span></p>
   </td>
  </tr>
-@endforeach
+@empty
+<tr>
+<td colspan="6" align="center">Tidak ada barang yang dipinjam</td>
+</tr>
+@endforelse
 </table>
 
 <p class=MsoNormal><span lang=EN-ID style='font-size:12.0pt;line-height:107%;

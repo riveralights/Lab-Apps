@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Models\Report;
-use Barryvdh\DomPDF\Facade as PDF;
 use App\Models\Laboratory;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 use App\Http\Controllers\Controller;
 
 class ReportController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $reports = Report::with(['laboratory'])->orderBy('name', 'ASC')->get();
         return view('pages.admin.report.index', [
@@ -104,6 +105,16 @@ class ReportController extends Controller
     public function personalPrint(Report $report)
     {
         $pdf = PDF::loadView('pages.admin.report.personal-print', ['report' => $report]);
+        return $pdf->stream();
+    }
+
+    public function monthlyReport(Request $request)
+    {
+        $start_date = Carbon::parse($request->start_date)->toDateTimeString();
+        $end_date = Carbon::parse($request->end_date)->toDateTimeString();
+        $reports = Report::whereBetween('created_at',[$start_date,$end_date])->get();
+
+        $pdf = PDF::loadView('pages.admin.report.monthly-print', ['reports' => $reports]);
         return $pdf->stream();
     }
 }

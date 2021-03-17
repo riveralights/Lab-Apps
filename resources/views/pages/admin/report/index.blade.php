@@ -37,6 +37,28 @@
             <p>List Berita Acara</p>
             <a href="{{ route('report.create') }}" class="btn btn-primary btn-sm">Buat Laporan Baru</a>
           </div>
+
+          <form action="{{ route('report.monthly') }}" class="row row-cols-lg-auto g-3 align-items-center justify-content-center mx-4 mb-3" method="POST">
+            @csrf
+            <div class="col-12">
+              <label for="start_date" class="visually-hidden">Tanggal Awal</label>
+              <div class="input-group">
+                <div class="input-group-text">Tanggal Awal</div>
+                <input type="date" name="start_date" id="start_date" class="form-control">
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="end_date" class="visually-hidden">Tanggal Akhir</label>
+              <div class="input-group">
+                <div class="input-group-text">Tanggal Akhir</div>
+                <input type="date" name="end_date" id="end_date" class="form-control">
+              </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" target="_blank" class="btn btn-info">Print Laporan Bulanan</button>
+            </div>
+          </form>
+
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-striped" id="table-category">
