@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Laboratory;
 use App\Models\Report;
+use Barryvdh\DomPDF\Facade as PDF;
+use App\Models\Laboratory;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ReportController extends Controller
 {
@@ -98,5 +99,11 @@ class ReportController extends Controller
         $report->delete();
 
         return redirect()->route('report.index')->with('success', "Data <b>" . $old_name . "</b> berhasil di hapus");
+    }
+
+    public function personalPrint(Report $report)
+    {
+        $pdf = PDF::loadView('pages.admin.report.personal-print', ['report' => $report]);
+        return $pdf->stream();
     }
 }

@@ -27,6 +27,7 @@ Route::get('/', function () {
 
 Route::prefix('admin')->middleware(['auth'])->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::view('/print-preview', 'pages.admin.report.personal-print');
 
     Route::prefix('category')->group(function(){
         Route::get('/', [CategoryController::class, 'index'])->name('category.index');
@@ -54,6 +55,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
         Route::get('/{report}/edit', [ReportController::class, 'edit'])->name('report.edit');
         Route::put('/{report}', [ReportController::class, 'update'])->name('report.update');
         Route::delete('{report}', [ReportController::class, 'destroy'])->name('report.destroy');
+        Route::get('/{report}/print', [ReportController::class, 'personalPrint'])->name('report.personalprint');
     });
 
     Route::prefix('report-detail')->group(function(){

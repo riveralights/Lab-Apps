@@ -2,8 +2,9 @@
 @section('content')
 <div class="container">
     <div class="card mt-5">
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-between align-items-center">
             <h4 class="card-title">Detail Berita Acara</h4>
+            <a href="{{ route('report.personalprint', $report) }}" class="btn btn-info d-flex align-items-center"><i class="bi bi-printer-fill me-2"></i> Print PDF</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -61,7 +62,7 @@
                       <td>{{ $detail->name }}</td>
                       <td class="text-center">{{ $detail->quantity }}</td>
                       <td class="text-center">{{ $detail->condition_before }}</td>
-                      <td class="text-center">{{ $detail->condition_after }}</td>
+                      <td class="text-center">{{ $detail->condition_before }}</td>
                       <td>{{ $detail->description }}</td>
                     </tr>
                 @empty
