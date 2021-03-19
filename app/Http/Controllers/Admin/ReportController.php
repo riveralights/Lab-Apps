@@ -114,7 +114,7 @@ class ReportController extends Controller
         $end_date = Carbon::parse($request->end_date)->toDateTimeString();
         $reports = Report::whereBetween('created_at',[$start_date,$end_date])->get();
 
-        $pdf = PDF::loadView('pages.admin.report.monthly-print', ['reports' => $reports]);
+        $pdf = PDF::loadView('pages.admin.report.monthly-print', ['reports' => $reports])->setPaper('a4', 'landscape');
         return $pdf->stream();
     }
 }

@@ -26,6 +26,7 @@
             <h4 class="card-title">Tambah Laporan Aset Baru</h4>
           </div>
           <div class="card-body">
+
             @if($errors->any())
               <div class="alert alert-danger" role="alert">
                   <ul class="mb-0">
@@ -47,6 +48,11 @@
               <div class="form-group">
                 <label for="name">Nama Barang</label>
                 <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
+              </div>
+
+              <div class="form-group">
+                <label for="serial_number">Serial Number</label>
+                <input type="text" name="serial_number" id="serial_number" class="form-control" value="{{ old('serial_number') }}">
               </div>
 
               <div class="form-group">

@@ -10,7 +10,7 @@
 			<h4>Rekap Berita Acara Praktikum</h4>
 		</center>
 		<br/>
-		{{-- <a href="/pegawai/cetak_pdf" class="btn btn-primary" target="_blank">CETAK PDF</a> --}}
+
 		<div class="table-responsive">
       <table class='table table-bordered'>
 			<thead>

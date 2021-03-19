@@ -37,6 +37,28 @@
             <p>Daftar Aset</p>
             <a href="{{ route('inventory.create') }}" class="btn btn-primary btn-sm">Tambah Laporan Aset</a>
           </div>
+
+          <form action="{{ route('inventory.monthly') }}" class="row row-cols-lg-auto g-3 align-items-center justify-content-center mx-4 mb-3" method="POST">
+            @csrf
+            <div class="col-12">
+              <label for="start_date" class="visually-hidden">Tanggal Awal</label>
+              <div class="input-group">
+                <div class="input-group-text">Tanggal Awal</div>
+                <input type="date" name="start_date" id="start_date" class="form-control">
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="end_date" class="visually-hidden">Tanggal Akhir</label>
+              <div class="input-group">
+                <div class="input-group-text">Tanggal Akhir</div>
+                <input type="date" name="end_date" id="end_date" class="form-control">
+              </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" target="_blank" class="btn btn-info">Print Laporan Bulanan</button>
+            </div>
+          </form>
+
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-striped" id="table-category">
@@ -45,9 +67,9 @@
                     <th>No.</th>
                     <th>Merk</th>
                     <th>Nama Aset</th>
+                    <th>Serial Number</th>
                     <th>Jenis Aset</th>
                     <th>Kondisi</th>
-                    <th>Keterangan</th>
                     <th>Opsi</th>
                   </tr>
                 </thead>
@@ -57,6 +79,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $inventory->brand }}</td>
                         <td>{{ $inventory->name }}</td>
+                        <td>{{ $inventory->serial_number }}</td>
                         <td>{{ $inventory->category->name }}</td>
                         <td>
                           @if($inventory->condition == 'Rusak')
@@ -67,9 +90,8 @@
                             <span class="badge bg-warning">{{ $inventory->condition }}</span>
                           @endif
                         </td>
-                        <td>{{ $inventory->description }}</td>
                         <td>
-                          <a href="" class="btn btn-info btn-sm">Detail</a>
+                          <a href="{{ route('inventory.show', $inventory) }}" class="btn btn-info btn-sm">Detail</a>
                           <a href="{{ route('inventory.edit', $inventory) }}" class="btn btn-warning btn-sm">Sunting</a>
                           <form action="{{ route('inventory.destroy', $inventory) }}" method="POST" class="d-inline">
                             @csrf

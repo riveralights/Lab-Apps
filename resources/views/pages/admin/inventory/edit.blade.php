@@ -51,6 +51,11 @@
               </div>
 
               <div class="form-group">
+                <label for="serial_number">Serial Number</label>
+                <input type="text" name="serial_number" id="serial_number" class="form-control" value="{{ old('serial_number') ?? $inventory->serial_number }}">
+              </div>
+
+              <div class="form-group">
                 <label for="category_id">Jenis Barang</label>
                 <select name="category_id" id="category_id" class="form-control">
                   <option selected disabled>-- Pilih Jenis Barang --</option>
