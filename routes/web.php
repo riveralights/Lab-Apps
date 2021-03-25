@@ -7,8 +7,6 @@ use App\Http\Controllers\Admin\LaboratoryController as LaboratoryController;
 use App\Http\Controllers\Admin\ReportController as ReportController;
 use App\Http\Controllers\Admin\ReportDetailController as ReportDetailController;
 use App\Http\Controllers\Admin\InventoryController as InventoryController;
-use App\Models\Inventory;
-use App\Models\Laboratory;
 
 /*
 |--------------------------------------------------------------------------

@@ -11,7 +11,7 @@
     </div>
     <div class="sidebar-menu">
         <ul class="menu">
-            <li class="sidebar-title">Menu Lab Apps</li>
+            <li class="sidebar-title">Lab Apps</li>
 
             <li class="sidebar-item{{ Request::is('admin') ? ' active' : '' }} ">
                 <a href="{{ route('dashboard') }}" class='sidebar-link'>
@@ -19,6 +19,8 @@
                     <span>Dashboard</span>
                 </a>
             </li>
+
+            <li class="sidebar-title">Master Data</li>
             
             <li class="sidebar-item{{ Request::is('admin/category*') ? ' active' : '' }} ">
                 <a href="{{ route('category.index') }}" class='sidebar-link'>
@@ -33,6 +35,8 @@
                     <span>Ruangan Lab</span>
                 </a>
             </li>
+
+            <li class="sidebar-title">Menu Lab Apps</li>
 
             <li class="sidebar-item{{ Request::is('admin/report*') ? ' active' : '' }} ">
                 <a href="{{ route('report.index') }}" class='sidebar-link'>
@@ -56,6 +60,16 @@
                     <span>Pengaturan Akun</span>
                 </a>
                 <ul class="submenu ">
+                    <li class="submenu-item">
+                        <a href="">
+                            Hak Akses
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="">
+                            Pengaturan User
+                        </a>
+                    </li>
                     <li class="submenu-item ">
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Logout
