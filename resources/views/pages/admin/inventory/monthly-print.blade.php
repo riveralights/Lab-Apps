@@ -14,15 +14,15 @@
       <table class='table table-bordered'>
 			<thead>
 				<tr>
-					<th>No</th>
-					<th>Nama Barang</th>
-					<th>Merk Barang</th>
-					<th>Serial Number</th>
-					<th>Kategori Barang</th>
-					<th>Tanggal Pembelian</th>
-					<th>Tanggal Pemakaian</th>
-					<th>Kondisi</th>
-					<th>Keterangan</th>
+					<th class="align-middle text-center">No</th>
+					<th class="align-middle text-center">Nama Barang</th>
+					<th class="align-middle text-center">Merk Barang</th>
+					<th class="align-middle text-center">Serial Number</th>
+					<th class="align-middle text-center">Kategori Barang</th>
+					<th class="align-middle text-center">Tanggal Pembelian</th>
+					<th class="align-middle text-center">Tanggal Pemakaian</th>
+					<th class="align-middle text-center">Kondisi</th>
+					<th class="align-middle text-center">Keterangan</th>
 				</tr>
 			</thead>
 			<tbody>

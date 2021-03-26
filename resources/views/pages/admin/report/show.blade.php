@@ -63,7 +63,7 @@
                       <td class="text-center">{{ $detail->quantity }}</td>
                       <td class="text-center">{{ $detail->condition_before }}</td>
                       <td class="text-center">{{ $detail->condition_before }}</td>
-                      <td>{{ $detail->description }}</td>
+                      <td class="text-center">{{ $detail->description }}</td>
                     </tr>
                 @empty
                     <tr>

@@ -1,5 +1,10 @@
 <?php
 
+if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+    error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+}
+
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController as DashboardController;
 use App\Http\Controllers\Admin\CategoryController as CategoryController;
@@ -7,6 +12,7 @@ use App\Http\Controllers\Admin\LaboratoryController as LaboratoryController;
 use App\Http\Controllers\Admin\ReportController as ReportController;
 use App\Http\Controllers\Admin\ReportDetailController as ReportDetailController;
 use App\Http\Controllers\Admin\InventoryController as InventoryController;
+use App\Http\Controllers\Admin\SettingController as SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +78,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
         Route::delete('{inventory}', [InventoryController::class, 'destroy'])->name('inventory.destroy');
         Route::post('/filter/print', [InventoryController::class, 'monthlyInventory'])->name('inventory.monthly');
     });
+
+    Route::resource('setting', SettingController::class)->except(['show']);
 
     Route::prefix('user')->group(function(){
         //

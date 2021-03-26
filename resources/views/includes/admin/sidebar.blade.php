@@ -20,6 +20,7 @@
                 </a>
             </li>
 
+            @role('teknisi')
             <li class="sidebar-title">Master Data</li>
             
             <li class="sidebar-item{{ Request::is('admin/category*') ? ' active' : '' }} ">
@@ -35,22 +36,27 @@
                     <span>Ruangan Lab</span>
                 </a>
             </li>
+            @endrole
 
             <li class="sidebar-title">Menu Lab Apps</li>
 
+            @if(auth()->user()->can('lihat berita'))
             <li class="sidebar-item{{ Request::is('admin/report*') ? ' active' : '' }} ">
                 <a href="{{ route('report.index') }}" class='sidebar-link'>
                     <i class="bi bi-newspaper"></i>
                     <span>Berita Acara</span>
                 </a>
             </li>
+            @endif
 
+            @hasanyrole('kajur|teknisi')
             <li class="sidebar-item{{ Request::is('admin/inventory*') ? ' active' : '' }} ">
                 <a href="{{ route('inventory.index') }}" class='sidebar-link'>
                     <i class="bi bi-file-earmark-check-fill"></i>
                     <span>Laporan Aset</span>
                 </a>
             </li>
+            @endhasanyrole
 
             <li class="sidebar-title">Personalisasi</li>
 
@@ -60,11 +66,13 @@
                     <span>Pengaturan Akun</span>
                 </a>
                 <ul class="submenu ">
+                    @role('kajur')
                     <li class="submenu-item">
-                        <a href="">
+                        <a href="{{ route('setting.index') }}">
                             Hak Akses
                         </a>
                     </li>
+                    @endrole
                     <li class="submenu-item">
                         <a href="">
                             Pengaturan User

@@ -35,9 +35,12 @@
         <div class="card">
           <div class="card-header d-flex justify-content-between align-items-center">
             <p>Daftar Aset</p>
+            @can('buat laporan')
             <a href="{{ route('inventory.create') }}" class="btn btn-primary btn-sm">Tambah Laporan Aset</a>
+            @endcan
           </div>
 
+          @hasanyrole('kajur|teknisi')
           <form action="{{ route('inventory.monthly') }}" class="row row-cols-lg-auto g-3 align-items-center justify-content-center mx-4 mb-3" method="POST">
             @csrf
             <div class="col-12">
@@ -58,6 +61,7 @@
               <button type="submit" target="_blank" class="btn btn-info">Print Laporan Bulanan</button>
             </div>
           </form>
+          @endhasanyrole
 
           <div class="card-body">
             <div class="table-responsive">
@@ -92,12 +96,16 @@
                         </td>
                         <td>
                           <a href="{{ route('inventory.show', $inventory) }}" class="btn btn-info btn-sm">Detail</a>
+                          @can('edit laporan')
                           <a href="{{ route('inventory.edit', $inventory) }}" class="btn btn-warning btn-sm">Sunting</a>
+                          @endcan
+                          @can('hapus laporan')
                           <form action="{{ route('inventory.destroy', $inventory) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Anda yaking ingin menghapus data {{ $inventory->name }} ?')">Hapus</button>
                           </form>
+                          @endcan
                         </td>
                       </tr>
                   @empty

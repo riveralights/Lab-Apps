@@ -39,7 +39,7 @@
               @csrf
 
               <div class="form-group">
-                <label for="name">Nama Laboran</label>
+                <label for="name">Nama Guru Peminjam</label>
                 <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
               </div>
 

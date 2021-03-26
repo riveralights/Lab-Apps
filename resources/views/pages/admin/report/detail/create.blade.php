@@ -142,7 +142,7 @@
 
                   <div class="form-group">
                     <label for="quantity" class="mb-2">Jumlah Aset</label>
-                    <input type="number" name="quantity" id="quantity" class="form-control" value="{{ old('quantity') }}">
+                    <input type="number" min="0" name="quantity" id="quantity" class="form-control" value="{{ old('quantity') }}">
                   </div>
 
                   <div class="form-group">

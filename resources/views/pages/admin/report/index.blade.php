@@ -35,9 +35,12 @@
         <div class="card">
           <div class="card-header d-flex justify-content-between align-items-center">
             <p>List Berita Acara</p>
+            @can('buat berita')
             <a href="{{ route('report.create') }}" class="btn btn-primary btn-sm">Buat Laporan Baru</a>
+            @endcan
           </div>
 
+          @hasanyrole('kajur|teknisi')
           <form action="{{ route('report.monthly') }}" class="row row-cols-lg-auto g-3 align-items-center justify-content-center mx-4 mb-3" method="POST">
             @csrf
             <div class="col-12">
@@ -58,6 +61,7 @@
               <button type="submit" target="_blank" class="btn btn-info">Print Laporan Bulanan</button>
             </div>
           </form>
+          @endhasanyrole
 
           <div class="card-body">
             <div class="table-responsive">
@@ -82,17 +86,21 @@
                         <td>{{ \Carbon\Carbon::parse($report->starting_date)->isoFormat('dddd, D MMMM Y') }}</td>
                         <td>
                           <a href="{{ route('report.show', $report) }}" class="btn btn-info pb-0"><i class="bi bi-eye-fill"></i></a>
+                          @can('edit berita')
                           <a href="{{ route('report.edit', $report) }}" class="btn btn-warning pb-0"><i class="bi bi-pencil-fill"></i></a>
+                          @endcan
+                          @can('hapus berita')
                           <form action="{{ route('report.destroy', $report) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger pb-0" onclick="return confirm('Anda yaking ingin menghapus data {{ $report->name }} ?')"><i class="bi bi-trash2-fill"></i></button>
                           </form>
+                          @endcan
                         </td>
                       </tr>
                   @empty
                       <tr>
-                        <td colspan="3" class="text-muted text-center">Tidak Ada Data</td>
+                        <td colspan="6" class="text-muted text-center">Tidak Ada Data</td>
                       </tr>
                   @endforelse
                 </tbody>
