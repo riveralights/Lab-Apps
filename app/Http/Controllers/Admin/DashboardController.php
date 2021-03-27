@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Report;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use App\Models\Inventory;
 use Spatie\Permission\Models\Permission;
 
 class DashboardController extends Controller
@@ -29,6 +31,11 @@ class DashboardController extends Controller
             $user->givePermissionTo('lihat berita');
         }
 
-        return view('pages.admin.dashboard');
+        return view('pages.admin.dashboard', [
+            'report' => Report::count(),
+            'inventory' => Inventory::count(),
+            'baik' => Inventory::where('condition', 'Baik')->count(),
+            'rusak' => Inventory::where('condition', 'Rusak')->count(),
+        ]);
     }
 }

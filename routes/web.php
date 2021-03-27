@@ -26,7 +26,7 @@ use App\Http\Controllers\Admin\SettingController as SettingController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('dashboard'));
 });
 
 Route::prefix('admin')->middleware(['auth'])->group(function(){
