@@ -86,16 +86,14 @@
                         <td>{{ \Carbon\Carbon::parse($report->starting_date)->isoFormat('dddd, D MMMM Y') }}</td>
                         <td>
                           <a href="{{ route('report.show', $report) }}" class="btn btn-info pb-0"><i class="bi bi-eye-fill"></i></a>
-                          @can('edit berita')
+                          @if(auth()->user()->id == $report->user_id)
                           <a href="{{ route('report.edit', $report) }}" class="btn btn-warning pb-0"><i class="bi bi-pencil-fill"></i></a>
-                          @endcan
-                          @can('hapus berita')
                           <form action="{{ route('report.destroy', $report) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger pb-0" onclick="return confirm('Anda yaking ingin menghapus data {{ $report->name }} ?')"><i class="bi bi-trash2-fill"></i></button>
                           </form>
-                          @endcan
+                          @endif
                         </td>
                       </tr>
                   @empty

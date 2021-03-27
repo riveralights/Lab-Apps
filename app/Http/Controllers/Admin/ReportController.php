@@ -47,7 +47,7 @@ class ReportController extends Controller
             'description.required'   => 'Keterangan wajib diisi',
         ]);
 
-        $reportsuccess = Report::create($request->all());
+        $reportsuccess = auth()->user()->reports()->create($request->all());
 
         return redirect()->route('detail.create', $reportsuccess->id)->with('warning', "Silahkan isi detail peminjaman barang");
     }

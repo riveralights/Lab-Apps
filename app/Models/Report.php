@@ -21,4 +21,9 @@ class Report extends Model
     {
         return $this->hasMany(ReportDetail::class);
     }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
