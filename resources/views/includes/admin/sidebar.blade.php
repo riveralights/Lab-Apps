@@ -74,8 +74,8 @@
                     </li>
                     @endrole
                     <li class="submenu-item">
-                        <a href="">
-                            Pengaturan User
+                        <a href="{{ route('user.password.edit') }}">
+                            Ganti Password
                         </a>
                     </li>
                     <li class="submenu-item ">

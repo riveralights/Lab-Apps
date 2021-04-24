@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\ReportController as ReportController;
 use App\Http\Controllers\Admin\ReportDetailController as ReportDetailController;
 use App\Http\Controllers\Admin\InventoryController as InventoryController;
 use App\Http\Controllers\Admin\SettingController as SettingController;
+use App\Http\Controllers\Admin\UserController as UserController;
+use App\Http\Controllers\Admin\PasswordController as PasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,9 +83,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function(){
 
     Route::resource('setting', SettingController::class)->except(['show']);
 
-    Route::prefix('user')->group(function(){
-        //
-    });
+    Route::get('/password', [PasswordController::class, 'edit'])->name('user.password.edit');
+    Route::patch('/password', [PasswordController::class, 'update'])->name('user.password.update');
 });
 
 Auth::routes();

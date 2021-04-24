@@ -14,7 +14,7 @@ class DashboardController extends Controller
     public function index()
     {
         // $role = Role::create(['name' => 'kajur']);
-        // $permission = Permission::create(['name' => 'lihat berita']);
+        // $permission = Permission::create(['name' => 'buat berita']);
         // auth()->user()->givePermissionTo('input berita');
         // auth()->user()->assignRole('teknisi');
         // $role = Role::findById(1);

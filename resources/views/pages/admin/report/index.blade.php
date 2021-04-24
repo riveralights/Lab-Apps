@@ -35,9 +35,9 @@
         <div class="card">
           <div class="card-header d-flex justify-content-between align-items-center">
             <p>List Berita Acara</p>
-            @can('buat berita')
+            @role('guru')
             <a href="{{ route('report.create') }}" class="btn btn-primary btn-sm">Buat Laporan Baru</a>
-            @endcan
+            @endrole
           </div>
 
           @hasanyrole('kajur|teknisi')
