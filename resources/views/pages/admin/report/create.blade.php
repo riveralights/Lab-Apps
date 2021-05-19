@@ -40,7 +40,7 @@
 
               <div class="form-group">
                 <label for="name">Nama Guru Peminjam</label>
-                <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}">
+                <input type="text" name="name" id="name" class="form-control" value="{{ Auth::user()->name }}" disabled>
               </div>
 
               <div class="form-group">

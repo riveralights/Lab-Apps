@@ -76,7 +76,7 @@ class InventoryController extends Controller
         $end_date = Carbon::parse($request->end_date)->toDateTimeString();
         $inventories = Inventory::whereBetween('created_at',[$start_date,$end_date])->get();
         
-        $pdf = PDF::loadView('pages.admin.inventory.monthly-print', ['inventories' => $inventories])->setPaper('a4', 'landscape');
-        return $pdf->stream();
+        $pdf = PDF::loadView('pages.admin.inventory.monthly-print', ['inventories' => $inventories, 'start_date' => $start_date, 'end_date' => $end_date])->setPaper('a4', 'landscape');
+        return $pdf->download('rekap-aset.pdf');
     }
 }

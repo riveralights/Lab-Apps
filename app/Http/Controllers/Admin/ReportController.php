@@ -105,7 +105,7 @@ class ReportController extends Controller
     public function personalPrint(Report $report)
     {
         $pdf = PDF::loadView('pages.admin.report.personal-print', ['report' => $report]);
-        return $pdf->stream();
+        return $pdf->download('berita_acara.pdf');
     }
 
     public function monthlyReport(Request $request)
@@ -114,7 +114,7 @@ class ReportController extends Controller
         $end_date = Carbon::parse($request->end_date)->toDateTimeString();
         $reports = Report::whereBetween('created_at',[$start_date,$end_date])->get();
 
-        $pdf = PDF::loadView('pages.admin.report.monthly-print', ['reports' => $reports])->setPaper('a4', 'landscape');
-        return $pdf->stream();
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('pages.admin.report.monthly-print', ['reports' => $reports, 'start_date' => $start_date, 'end_date' => $end_date])->setPaper('a4', 'landscape');
+        return $pdf->download('rekap_berita_acara.pdf');
     }
 }

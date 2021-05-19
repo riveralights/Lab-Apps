@@ -38,10 +38,12 @@ div.WordSection1
 
 <body lang=EN-US style='word-wrap:break-word'>
 
+<img src="https://iili.io/BwCBhG.jpg" alt="" style="margin-top: -30px" width="100%">
+
 <div class=WordSection1>
 
 <p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-ID
-style='font-size:16.0pt;line-height:107%;font-family:"Times New Roman",serif'>BERITA
+style='font-size:16.0pt; padding-top:600px;line-height:107%;font-family:"Times New Roman",serif'>BERITA
 ACARA PRAKTIKUM</span></b></p>
 
 <p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-ID
