@@ -96,7 +96,7 @@
                         </td>
                         <td>
                           <a href="{{ route('inventory.show', $inventory) }}" class="btn btn-info btn-sm">Detail</a>
-                          @can('edit laporan')
+                          @can('ubah laporan')
                           <a href="{{ route('inventory.edit', $inventory) }}" class="btn btn-warning btn-sm">Sunting</a>
                           @endcan
                           @can('hapus laporan')

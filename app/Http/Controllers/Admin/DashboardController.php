@@ -15,6 +15,7 @@ class DashboardController extends Controller
     {
         // $role = Role::create(['name' => 'kajur']);
         // $permission = Permission::create(['name' => 'buat berita']);
+        // $permission = Permission::create(['name' => 'lihat berita']);
         // auth()->user()->givePermissionTo('input berita');
         // auth()->user()->assignRole('teknisi');
         // $role = Role::findById(1);
@@ -29,6 +30,9 @@ class DashboardController extends Controller
         if($role[0] == null) {
             $user->assignRole('guru');
             $user->givePermissionTo('lihat berita');
+            $user->givePermissionTo('ubah berita');
+            $user->givePermissionTo('buat berita');
+            $user->givePermissionTo('hapus berita');
         }
 
         return view('pages.admin.dashboard', [
