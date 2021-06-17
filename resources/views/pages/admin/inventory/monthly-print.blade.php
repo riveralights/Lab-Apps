@@ -20,6 +20,7 @@
 					<th class="align-middle text-center">Merk Barang</th>
 					<th class="align-middle text-center">Serial Number</th>
 					<th class="align-middle text-center">Kategori Barang</th>
+					<th class="align-middle text-center">Ruangan</th>
 					<th class="align-middle text-center">Tanggal Pembelian</th>
 					<th class="align-middle text-center">Tanggal Pemakaian</th>
 					<th class="align-middle text-center">Kondisi</th>
@@ -34,6 +35,7 @@
 					<td class="align-middle text-center">{{$inventory->brand}}</td>
 					<td class="align-middle text-center">{{$inventory->serial_number}}</td>
 					<td class="align-middle text-center">{{$inventory->category->name}}</td>
+					<td class="align-middle text-center">{{$inventory->laboratory->code}}</td>
 					<td class="align-middle">{{ \Carbon\Carbon::parse($inventory->buy_date)->isoFormat('dddd, D MMMM Y') }}</td>
 					<td class="align-middle">{{ \Carbon\Carbon::parse($inventory->unboxing_date)->isoFormat('dddd, D MMMM Y') }}</td>
 					<td class="align-middle text-center">{{$inventory->condition}}</td>

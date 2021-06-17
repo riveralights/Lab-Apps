@@ -29,6 +29,11 @@
                   <td>{{ $inventory->category->name }}</td>
                 </tr>
                 <tr>
+                  <th width="15%">Ruangan</th>
+                  <td width="1%">:</td>
+                  <td>{{ $inventory->laboratory->name }}</td>
+                </tr>
+                <tr>
                   <th width="15%">Tanggal Pembelian</th>
                   <td width="1%">:</td>
                   <td>{{ \Carbon\Carbon::parse($inventory->buy_date)->isoformat('dddd, D MMMM Y') }}</td>

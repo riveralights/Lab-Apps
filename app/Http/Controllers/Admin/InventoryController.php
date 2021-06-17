@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Carbon\Carbon;
 use App\Models\Category;
 use App\Models\Inventory;
+use App\Models\Laboratory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -23,7 +24,8 @@ class InventoryController extends Controller
     public function create()
     {
         return view('pages.admin.inventory.create', [
-            'categories' => Category::get()
+            'categories' => Category::get(),
+            'laboratories' => Laboratory::get(),
         ]);
     }
 
@@ -48,6 +50,7 @@ class InventoryController extends Controller
         return view('pages.admin.inventory.edit', [
             'inventory' => $inventory,
             'categories' => Category::get(),
+            'laboratories' => Laboratory::get(),
         ]);
     }
 

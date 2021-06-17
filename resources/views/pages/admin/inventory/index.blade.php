@@ -73,6 +73,7 @@
                     <th>Nama Aset</th>
                     <th>Serial Number</th>
                     <th>Jenis Aset</th>
+                    <th>Ruangan</th>
                     <th>Kondisi</th>
                     <th>Opsi</th>
                   </tr>
@@ -85,6 +86,7 @@
                         <td>{{ $inventory->name }}</td>
                         <td>{{ $inventory->serial_number }}</td>
                         <td>{{ $inventory->category->name }}</td>
+                        <td>{{ $inventory->laboratory->code }}</td>
                         <td>
                           @if($inventory->condition == 'Rusak')
                             <span class="badge bg-danger">{{ $inventory->condition }}</span>

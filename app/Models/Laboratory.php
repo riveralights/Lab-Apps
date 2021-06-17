@@ -15,4 +15,9 @@ class Laboratory extends Model
     {
         return $this->hasMany(Report::class);
     }
+
+    public function inventories()
+    {
+        return $this->hasMany(Inventory::class);
+    }
 }

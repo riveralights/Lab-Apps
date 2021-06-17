@@ -66,6 +66,16 @@
               </div>
 
               <div class="form-group">
+                <label for="laboratory_id">Ruangan Laboratorium</label>
+                <select name="laboratory_id" id="laboratory_id" class="form-control">
+                  <option disabled selected>-- Pilih Ruangan --</option>
+                  @foreach ($laboratories as $laboratory)
+                      <option {{ $laboratory->id == $report->laboratory_id ? 'selected' : '' }} value="{{ $laboratory->id }}">{{ $laboratory->name }}</option>
+                  @endforeach
+                </select>
+              </div>
+
+              <div class="form-group">
                 <label for="buy_date">Tanggal Pembelian</label>
                 <input type="date" name="buy_date" id="buy_date" class="form-control" value="{{ $inventory->buy_date }}">
               </div>
