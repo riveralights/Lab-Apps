@@ -13,7 +13,7 @@ class ReportController extends Controller
 {
     public function index(Request $request)
     {
-        $reports = Report::with(['laboratory'])->orderBy('name', 'ASC')->get();
+        $reports = Report::with(['laboratory'])->orderBy('created_at', 'DESC')->get();
         return view('pages.admin.report.index', [
             'reports' => $reports
         ]);
@@ -37,9 +37,9 @@ class ReportController extends Controller
             'end_date'      => 'required',
             'description'   => 'required'
         ], [
-            'name.required'          => 'Nama laboran wajib diisi',
-            'name.max'               => 'Nama laboran maksimal 75 karakter',
-            'name.min'               => 'Nama laboran minimal 3 karakter',
+            'name.required'          => 'Nama guru wajib diisi',
+            'name.max'               => 'Nama guru maksimal 75 karakter',
+            'name.min'               => 'Nama guru minimal 3 karakter',
             'lesson.required'        => 'Nama pelajaran wajib diisi',
             'lesson.max'             => 'Nama pelajaran maksimal 50 karakter',
             'starting_date.required' => 'Tanggal / waktu mulai wajib diisi',
@@ -77,9 +77,9 @@ class ReportController extends Controller
             'end_date'      => 'required',
             'description'   => 'required'
         ], [
-            'name.required'          => 'Nama laboran wajib diisi',
-            'name.max'               => 'Nama laboran maksimal 75 karakter',
-            'name.min'               => 'Nama laboran minimal 3 karakter',
+            'name.required'          => 'Nama guru wajib diisi',
+            'name.max'               => 'Nama guru maksimal 75 karakter',
+            'name.min'               => 'Nama guru minimal 3 karakter',
             'lesson.required'        => 'Nama pelajaran wajib diisi',
             'lesson.max'             => 'Nama pelajaran maksimal 50 karakter',
             'starting_date.required' => 'Tanggal / waktu mulai wajib diisi',

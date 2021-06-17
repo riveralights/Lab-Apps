@@ -14,7 +14,7 @@ class InventoryController extends Controller
 {
     public function index()
     {
-        $invetories = Inventory::orderBy('created_at', 'ASC')->get();
+        $invetories = Inventory::orderBy('created_at', 'DESC')->get();
         return view('pages.admin.inventory.index', [
             'inventories' => $invetories,
         ]);
